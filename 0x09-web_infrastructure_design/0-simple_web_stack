@@ -1,0 +1,68 @@
+https://docs.google.com/document/d/12D-bjolxs9uEhrDhWCQfHzfN8TRunN3SYxPVAzaDDEc/edit?usp=sharing
+
+Infrastructure Specifics:
+1. What is a Server:
+- A server is a computer or a system that provides services, resources, or data to other
+computers, known as clients, over a network. In this context, the server refers to the physical
+or virtual machine that hosts the web application and database.
+2. Role of the Domain Name:
+- The domain name (e.g., www.foobar.com) serves as a human-readable and memorable
+label for a website. It helps users access websites by translating user-friendly domain names
+into IP addresses, which computers use to locate each other on the internet. In this case,
+"www.foobar.com" is configured to point to the server's IP address (8.8.8.8).
+3. *Type of DNS Record for www in www.foobar.com:
+- The DNS record for "www" in "www.foobar.com" is typically an "A" (Address) record. This
+A record associates the subdomain "www" with the IP address 8.8.8.8, directing traffic to the
+correct server.
+4. Role of the Web Server:
+- The web server, in this case, Nginx, serves as the entry point for incoming web requests
+from users. Its primary roles include:
+- Handling HTTP/HTTPS requests from clients.
+- Serving static files like HTML, CSS, JavaScript, and images directly.
+- Managing reverse proxy configurations to forward dynamic requests to the application
+server.
+- Enabling SSL/TLS encryption (if configured) for secure communication with users.
+5. Role of the Application Server:
+- The application server (e.g., Gunicorn) is responsible for executing the server-side logic
+of your web application. Its roles include:
+- Running your web application code (e.g., Python, Ruby, PHP).
+- Processing dynamic requests, such as form submissions and user authentication.
+- Communicating with the database to retrieve or store data.
+- Generating dynamic content to be sent back to the web server.
+6. Role of the Database:
+- The database (MySQL in this case) stores and manages the structured data required by
+your web application. Its roles include:
+- Storing user information, content, and other dynamic data.
+- Handling data retrieval and storage operations.
+- Ensuring data integrity and security.
+- Allowing the application server to interact with stored data.
+7. Server Communication with the User's Computer:
+- The server communicates with the user's computer over the internet using the HTTP or
+HTTPS protocols, depending on the type of connection. When a user requests a web page,
+the server processes the request, generates the appropriate response, and sends it back to
+
+the user's computer. If HTTPS is used, the communication is encrypted to ensure data
+privacy and security during transit.
+This infrastructure ensures that user requests to "www.foobar.com" are properly handled,
+with the web server, application server, and database working together to deliver the
+requested content to the user's computer.
+Issues with this infrastructure
+1. Single Point of Failure (SPOF):
+- One significant issue with this infrastructure is the presence of a single point of failure
+(SPOF). Since all components, including the web server, application server, and
+database, are hosted on a single server, if that server experiences hardware failure,
+software issues, or other problems, the entire website will become inaccessible. This
+represents a significant risk to the website's availability and reliability.
+2. Downtime During Maintenance:
+- Another issue is that when maintenance tasks, such as deploying new code or
+performing server updates, are needed, it often requires the web server to be restarted.
+During this restart, the website may become temporarily unavailable. Users trying to
+access the website during this period will experience downtime. This can impact user
+experience and business operations.
+3. Scalability Limitations:
+- The infrastructure is not easily scalable to handle a sudden increase in incoming
+traffic. If the website experiences a traffic spike, the single server may not have the
+capacity to handle the increased load effectively. This can lead to slow performance,
+unresponsive web pages, and a poor user experience. Scaling up (adding more
+resources to a single server) may only provide a temporary solution and has practical
+limits.
